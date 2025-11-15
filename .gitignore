@@ -1,0 +1,149 @@
+# ==============================================================================
+# Rust/Cargo 核心产物（必选）
+# ==============================================================================
+# 编译产物目录（Cargo 自动生成，包含二进制文件、依赖、中间产物）
+target/
+# 增量编译缓存（Rust 1.64+ 引入，加速二次编译）
+.cargo-target-dir/
+# Cargo 锁文件：二进制项目建议提交，库项目建议忽略（让依赖自动适配最新兼容版）
+# 说明：如果是二进制项目（如应用、工具），删除下面这行（提交 Cargo.lock 确保依赖版本一致）
+#      如果是库项目（供他人依赖），保留这行（不锁定依赖版本，增加兼容性）
+Cargo.lock
+
+# Cargo 临时/备份文件
+Cargo.toml.orig
+Cargo.toml.backup
+Cargo.toml.patch
+Cargo.toml.swp
+# 本地依赖缓存（cargo vendor 生成，若需提交依赖可删除此行）
+vendor/
+# 依赖补丁目录（cargo patch 相关）
+patches/
+# 构建脚本生成的文件
+build.rs
+build/
+out/
+
+# ==============================================================================
+# 开发工具/编辑器配置（按需保留，根据团队工具链调整）
+# ==============================================================================
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+# （说明：上面保留了常用的配置文件，若团队不需要共享，可直接写 .vscode/）
+
+# IntelliJ IDEA/CLion
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Vim
+.*.swp
+.*.swo
+*.vim
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list/
+tramp/
+.DS_Store
+
+# Sublime Text
+*.sublime-*
+
+# Visual Studio
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ==============================================================================
+# 跨平台/临时文件（必选）
+# ==============================================================================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.tmp
+*.temp
+
+# Linux
+*.swp
+*.swo
+*~
+.core
+.viminfo
+
+# ==============================================================================
+# 特定场景文件（按需启用）
+# ==============================================================================
+# 1. WebAssembly (wasm) 项目
+# wasm-pack 产物
+pkg/
+# wasm-bindgen 生成的 JS 绑定
+*.wasm
+*.js
+*.d.ts
+# wasm 调试文件
+*.wasm.map
+
+# 2. 代码覆盖率报告
+coverage/
+*.profdata
+*.profraw
+lcov.info
+cov.xml
+
+# 3. 环境变量文件（含敏感信息，禁止提交）
+.env
+.env.local
+.env.dev
+.env.prod
+.env.test
+.env.*.local
+
+# 4. 日志文件
+*.log
+logs/
+
+# 5. Docker 相关（若项目含 Docker）
+.dockerignore
+Dockerfile.*.bak
+docker-compose.*.bak
+
+# 6. 文档构建产物（如 mdbook）
+book/
+docs/_site/
+docs/.jekyll-cache/
+
+# 7. 性能分析文件
+*.perf
+perf.data
+perf.data.old
+
+# 8. 打包产物（如 cargo-deb、cargo-rpm）
+*.deb
+*.rpm
+*.tar.gz
+*.zip
